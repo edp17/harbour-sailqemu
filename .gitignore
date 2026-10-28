@@ -1,0 +1,40 @@
+build/
+*.user
+*.swp
+*.rpm
+*.tar.gz
+CMakeFiles/
+CMakeCache.txt
+
+# SailQEMU: local SDK/RPM and Meson outputs (generated, not source)
+/_build/
+/.mb2/
+/build/
+/build-*/
+/upstream/_build/
+/upstream/build/
+**/pyvenv/
+**/.venv/
+**/__pycache__/
+*.py[cod]
+*.rpm
+*.log
+*.tmp
+*.swp
+*.swo
+*.rej
+*.orig
+*~
+# Local VM disks: keep them outside source repositories
+/*.iso
+/*.qcow2
+/*.img
+/*.vdi
+/*.vmdk
+# Local credentials and editor-specific settings
+.env
+.env.*
+*.p12
+*.pfx
+/.idea/
+/.vscode/

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=SailQEMU
+Comment=Native Sailfish QEMU virtual machine controller
+Exec=harbour-sailqemu
+Icon=harbour-sailqemu
+X-Sailfish-ApplicationType=Silica
+
+[X-Sailjail]
+OrganizationName=org.edp17
+ApplicationName=SailQEMU
+Permissions=UserDirs;RemovableMedia;Internet;SailQemuDbus

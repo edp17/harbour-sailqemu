@@ -1,0 +1,25 @@
+# -*- mode: sh -*-
+# x-sailjail-description = SailQEMU guest display
+# x-sailjail-long-description = Run SailQEMU's display listener and exchange QEMU virtual-display D-Bus messages.
+# Experimental local permission for SailQEMU 0.5.0 testing.
+
+# Sailjail's private-bin masks helper executables not in the app's launcher.
+private-bin harbour-sailqemu-display-listener
+
+# QEMU's standard -display dbus mode owns org.qemu, and the frontend / helper
+# need access to VM, console, mouse, keyboard and display listener interfaces.
+# QEMU must be visible for GetNameOwner/GetConnectionUnixProcessID; the
+# frontend checks the actual service PID before talking to guest input.
+dbus-user.see org.qemu
+dbus-user.own org.qemu
+dbus-user.talk org.qemu
+dbus-user.call org.qemu=org.qemu.Display1.*@/org/qemu/Display1/*
+dbus-user.call org.qemu=org.qemu.Display1.*@/org/qemu/Display1
+dbus-user.broadcast org.qemu=org.qemu.Display1.*@/org/qemu/Display1/*
+dbus-user.broadcast org.qemu=org.qemu.Display1.*@/org/qemu/Display1
+
+# Console discovery and mouse mode/geometry query the standard D-Bus
+# Properties.Get interface, not org.qemu.Display1.*. The earlier rule only
+# admitted the latter and left live mouse/input discovery restricted.
+dbus-user.call org.qemu=org.freedesktop.DBus.Properties.*@/org/qemu/Display1/*
+dbus-user.call org.qemu=org.freedesktop.DBus.Properties.*@/org/qemu/Display1
